@@ -22,15 +22,22 @@
 
 <div class="container">
   <div class="row justify-content-center">
-    <form (submit)="authenticateData()">
+    <form [formGroup] = "form" (ngSubmit)="OnSubmit()">
       <div class="form-group">
         <label>Email</label>
-        <input type="email" name="email" [(ngModel)]="email" class="form-control">
+        <input type="email" name="email" formControlName="email" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+          <div *ngIf="f.email.errors.required">Email is required</div>
+        </div>
       </div>
       <div class="form-group">
         <label>Password</label>
-        <input type="password" name="password" [(ngModel)]="password" class="form-control">
-        <label *ngIf="invalid">Incorrect username or password</label>
+        <input type="password" name="password" formControlName="password" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+          <div *ngIf="f.password.errors.required">Password is required</div>
+        </div>
         <br>
       </div>
       <div class="row">
