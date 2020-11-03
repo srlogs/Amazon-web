@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminInventoryComponent implements OnInit {
 
-  constructor() { }
+  products : any;
+  constructor() { 
+  }
 
   ngOnInit(): void {
+    this.products = JSON.parse(localStorage.getItem('productData'));
   }
 
 }

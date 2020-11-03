@@ -1,0 +1,43 @@
+<app-nav-bar></app-nav-bar>
+
+<div *ngIf="isSuccess">
+  <div class="alert alert-success" role="alert">
+    Product Added successfully!
+  </div>
+</div>
+
+<div
+  class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-3 mb-5 ml-3 mr-3 border-bottom">
+  <h1 class="h2">Add Products</h1>
+</div>
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="onSubmit();">
+    <div class="form-group">
+      <label>Product Name: </label>
+      <input type="text" id="productName" formControlName="product_name" class="form-control">
+    </div>
+    <div class="form-group">
+      <label> Quantity: </label>
+      <input type="number" id="productQuantity" formControlName="product_quantity" class="form-control">
+    </div>
+    <div class="form-group">
+      <label> Price: </label>
+      <input type="number" id="productPrice" formControlName="product_price" class="form-control">
+    </div>
+    <div class="form-group">
+      <label> Description: </label>
+      <textarea formControlName="product_description" id="description" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+      <label> Discount: </label>
+      <input type="number" id="productDiscount" formControlName="product_discount" class="form-control">
+    </div>
+    <div class="form-group">
+      <label> Preview Image: </label>
+      <input #myInput type="file" id="image" (change)="onFileSelected($event)" class="form-control-file">
+    </div>
+    <div class="row ml-1">
+      <input type="submit" name="add" value="Add Item" class="btn btn-success">
+    </div>
+  </form>
+</div>

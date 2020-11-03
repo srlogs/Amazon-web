@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { AdminInventoryComponent } from './admin-inventory/admin-inventory.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { AddItemComponent } from './add-item/add-item.component';
 
 
 
@@ -19,7 +20,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     RegisterComponent,
     HomeComponent,
     AdminInventoryComponent,
-    NavBarComponent
+    NavBarComponent,
+    AddItemComponent
   ],
   imports: [
     BrowserModule,
