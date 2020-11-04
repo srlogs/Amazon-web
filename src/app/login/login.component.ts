@@ -34,8 +34,10 @@ export class LoginComponent implements OnInit {
         return;
       }
     }
-    else 
+    else {
+      localStorage.setItem('currentUser', this.f.email.value);
       this.router.navigate(['/home']);
+    } 
   }
 
   ngOnInit(): void {

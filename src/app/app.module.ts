@@ -12,6 +12,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { AddItemComponent } from './add-item/add-item.component';
 import { UpdateItemComponent } from './update-item/update-item.component';
 import { UserNavBarComponent } from './user-nav-bar/user-nav-bar.component';
+import { CartDataComponent } from './cart-data/cart-data.component';
 
 
 
@@ -25,7 +26,8 @@ import { UserNavBarComponent } from './user-nav-bar/user-nav-bar.component';
     NavBarComponent,
     AddItemComponent,
     UpdateItemComponent,
-    UserNavBarComponent
+    UserNavBarComponent,
+    CartDataComponent
   ],
   imports: [
     BrowserModule,

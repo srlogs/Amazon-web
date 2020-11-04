@@ -11,6 +11,7 @@ export class UserNavBarComponent implements OnInit {
   constructor(private router : Router) { }
 
   onLogout() {
+    localStorage.removeItem('currentUser');
     this.router.navigate(['/']);
   }
   ngOnInit(): void {
