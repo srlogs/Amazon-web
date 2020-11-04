@@ -28,7 +28,6 @@ export class CartDataComponent implements OnInit {
         this.products.push(x);
       }
     })
-    //console.log(index);
   }
 
   ngOnInit(): void {
@@ -37,7 +36,6 @@ export class CartDataComponent implements OnInit {
     this.allProducts.find(x => {
       if (x.cart_user === currentUser) {
         this.products.push(x);
-        //console.log(this.products);
       }
     })
   }

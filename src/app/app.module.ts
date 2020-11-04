@@ -14,6 +14,15 @@ import { UpdateItemComponent } from './update-item/update-item.component';
 import { UserNavBarComponent } from './user-nav-bar/user-nav-bar.component';
 import { CartDataComponent } from './cart-data/cart-data.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+// import { MatButtonModule } from '@angular/material/button';
+// import { MatSelectModule } from '@angular/material/select';
+// import { MatRadioModule } from '@angular/material/radio';
+// import { MatCardModule } from '@angular/material/card';
+
+
 
 
 
@@ -36,7 +45,14 @@ import { WishlistComponent } from './wishlist/wishlist.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    NgbModule
+   
+    // MatButtonModule,
+    // MatSelectModule,
+    // MatRadioModule,
+    // MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

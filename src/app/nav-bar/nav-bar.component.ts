@@ -6,12 +6,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-
+  search : string;
   constructor(private router : Router) { }
   onLogout() {
     localStorage.removeItem('admin');
     this.router.navigate(['/']);
   }
+
+  onSearch() {
+    console.log(this.search);
+  }
+  
   ngOnInit(): void {
   }
 
