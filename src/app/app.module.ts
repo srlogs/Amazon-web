@@ -13,6 +13,7 @@ import { AddItemComponent } from './add-item/add-item.component';
 import { UpdateItemComponent } from './update-item/update-item.component';
 import { UserNavBarComponent } from './user-nav-bar/user-nav-bar.component';
 import { CartDataComponent } from './cart-data/cart-data.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 
 
@@ -27,7 +28,8 @@ import { CartDataComponent } from './cart-data/cart-data.component';
     AddItemComponent,
     UpdateItemComponent,
     UserNavBarComponent,
-    CartDataComponent
+    CartDataComponent,
+    WishlistComponent
   ],
   imports: [
     BrowserModule,
