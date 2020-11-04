@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit {
       name: ['', Validators.required],
       phone: ['', Validators.required],
       email: ['', Validators.required],
-      password: ['', [Validators.required, Validators.maxLength(6)]]
+      password: ['', Validators.required]
     });
 
     this.returnUrl = '/';

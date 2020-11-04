@@ -50,7 +50,7 @@ export class AddItemComponent implements OnInit {
         product_price : this.pprice,
         product_description : this.pdesc,
         product_discount : this.pdisc,
-        product_image : this.imageData
+        product_image : this.selectedFile.name
       }
       this.productData.push(product_data);
       localStorage.setItem('productData', JSON.stringify(this.productData));
