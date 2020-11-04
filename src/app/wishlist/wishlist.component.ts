@@ -12,11 +12,11 @@ export class WishlistComponent implements OnInit {
   currentUser: any;
   cart_data: any;
   constructor(private router: Router) { }
-  
+
   toCart(data) {
     this.allProducts = JSON.parse(localStorage.getItem('cartData')) || [];
     let product = this.allProducts.find(x => x.cart_user === this.currentUser && x.product_name === data.product_name && x.product_description === data.product_description && x.product_price === data.product_price);
-    if(product) {
+    if (product) {
       localStorage.setItem('cartData', JSON.stringify(this.allProducts));
     }
     else {
@@ -34,6 +34,24 @@ export class WishlistComponent implements OnInit {
     }
     this.router.navigate(['/cart']);
   }
+
+  toRemove(data) {
+    var currentUser = localStorage.getItem('currentUser');
+    this.allProducts = JSON.parse(localStorage.getItem('wishlist')) || [];
+    let index = this.allProducts.findIndex(x => x.cart_user === currentUser && x.product_name === data.product_name && x.product_description === data.product_description && x.product_price === data.product_price);
+    this.allProducts.splice(index, 1);
+    localStorage.setItem('wishlist', JSON.stringify(this.allProducts));
+    this.allProducts = JSON.parse(localStorage.getItem('wishlist')) || [];
+    console.log(this.allProducts);
+    this.products = [];
+    this.allProducts.find(x => {
+      if (x.cart_user === currentUser) {
+        this.products.push(x);
+      }
+    })
+    //window.location.reload();
+  }
+
   ngOnInit(): void {
     this.currentUser = localStorage.getItem('currentUser');
     this.allProducts = JSON.parse(localStorage.getItem('wishlist')) || [];
