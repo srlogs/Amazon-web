@@ -1,6 +1,31 @@
+<app-user-nav-bar></app-user-nav-bar>
 
 
-
-<input type="file" name="file" id="image" (change)="onFileSelected($event)">
-<button type="button" (click)="onUpload()">Upload</button>
-<img [src]="imageData" id="image">
+<div *ngFor="let product of products">
+  <div class="card mb-3" style="max-width: 75%; margin-left: 30px;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img [src]="product.product_image" height="300px" width="350px">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Product name : {{product.product_name}}</h5>
+          <p class="card-text">Product Quantity : {{product.product_quantity}}</p>
+          <p class="card-text"> Price : {{product.product_price}} </p>
+          <p class="card-text"> Description : {{product.product_description}} </p>
+          <p class="card-text"> Discount : {{product.product_discount}} </p>
+          <div class="col-md-16">
+              <!-- <div class="row"> -->
+                <button type="button" class="btn btn-primary mr-4">Add to cart</button>
+              <!-- </div>
+              <div class="row"> -->
+                <button type="button" class="btn btn-success mr-4 pr-4 pl-4">Buy</button> 
+              <!-- </div> -->
+              
+              <button type="button" class="btn btn-secondary mr-4">To wishlist</button> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

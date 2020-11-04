@@ -7,27 +7,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HomeComponent implements OnInit {
 
-  selectedFile: File = null;
-  imageData : any;
+  products : any;
   constructor(private http : HttpClient) { }
-  onFileSelected(event) {
-    this.selectedFile = <File>event.target.files[0];
-    console.log(this.selectedFile);
-  }
+  
 
-  onUpload() {
-    const reader = new FileReader();
-    reader.readAsDataURL(this.selectedFile);
-    reader.addEventListener('load', ()=> {
-      console.log(reader.result);
-      this.imageData = reader.result;
-    })
-
-    //console.log(reader);
-    //localStorage.setItem('images', this.selectedFile.name);
-  }
 
   ngOnInit(): void {
+    this.products = JSON.parse(localStorage.getItem('productData'));
   }
 
 }
