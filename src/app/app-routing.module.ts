@@ -5,6 +5,7 @@ import { AdminInventoryComponent } from './admin-inventory/admin-inventory.compo
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { UpdateItemComponent } from './update-item/update-item.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: "addItem",
     component: AddItemComponent
+  },
+  {
+    path: "updateItem",
+    component: UpdateItemComponent
   }
 ];
 

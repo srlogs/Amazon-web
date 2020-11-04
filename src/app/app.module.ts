@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { AdminInventoryComponent } from './admin-inventory/admin-inventory.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { AddItemComponent } from './add-item/add-item.component';
+import { UpdateItemComponent } from './update-item/update-item.component';
 
 
 
@@ -21,7 +22,8 @@ import { AddItemComponent } from './add-item/add-item.component';
     HomeComponent,
     AdminInventoryComponent,
     NavBarComponent,
-    AddItemComponent
+    AddItemComponent,
+    UpdateItemComponent
   ],
   imports: [
     BrowserModule,
