@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { JsonPipe } from '@angular/common';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -10,7 +10,7 @@ export class HomeComponent implements OnInit {
   cart_data: any;
   wish_list: any;
   products: any;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   toCart(data) {
     var currentUser = localStorage.getItem('currentUser');
@@ -24,9 +24,14 @@ export class HomeComponent implements OnInit {
     }
     //console.log(cartData);
     this.cart_data = JSON.parse(localStorage.getItem('cartData')) || [];
-    this.cart_data.push(cartData);
-    console.log(this.cart_data);
-    localStorage.setItem('cartData', JSON.stringify(this.cart_data));
+    let cart = this.cart_data.find(x => x.cart_user === currentUser && x.product_name === data.product_name && x.product_description === data.product_description && x.product_price === data.product_price);
+    if (cart) {
+      localStorage.setItem('cartData', JSON.stringify(this.cart_data));
+    }
+    else {
+      this.cart_data.push(cartData);
+      localStorage.setItem('cartData', JSON.stringify(this.cart_data));
+    }
   }
 
   toWishList(data) {
@@ -37,11 +42,17 @@ export class HomeComponent implements OnInit {
       product_description: data.product_description,
       product_image: data.product_image,
       cart_user: currentUser,
-      product_discount : data.product_discount
+      product_discount: data.product_discount
     }
     this.wish_list = JSON.parse(localStorage.getItem('wishlist')) || [];
-    this.wish_list.push(wishlist);
-    localStorage.setItem('wishlist', JSON.stringify(this.wish_list));
+    let wlist = this.wish_list.find(x => x.cart_user === currentUser && x.product_name === data.product_name && x.product_description === data.product_description && x.product_price === data.product_price);
+    if (wlist) {
+      localStorage.setItem('wishlist', JSON.stringify(this.wish_list));
+    }
+    else {
+      this.wish_list.push(wishlist);
+      localStorage.setItem('wishlist', JSON.stringify(this.wish_list));
+    }
   }
 
 

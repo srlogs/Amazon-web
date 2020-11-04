@@ -21,7 +21,7 @@ export class CartDataComponent implements OnInit {
     this.allProducts.find(x => {
       if(x.cart_user === currentUser) {
         this.products.push(x);
-        console.log(this.products);
+        //console.log(this.products);
       }
     })
   }
