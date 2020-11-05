@@ -14,6 +14,7 @@ export class BuyProductComponent implements OnInit {
   searchText: string;
   form: FormGroup;
   product_image : any;
+  dT : any;
   constructor(private sharedService: SharedService, private router: Router, private formBuilder: FormBuilder) { }
 
   onLogout() {
@@ -26,24 +27,45 @@ export class BuyProductComponent implements OnInit {
   }
 
   onSubmit() {
+    this.products = JSON.parse(localStorage.getItem('orders')) ||[];
+    let currentUser = localStorage.getItem('currentUser');
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+    ];
+    let dateTime = new Date();
+    this.dT = dateTime.getDate().toString() +" "+ monthNames[dateTime.getMonth()] +" "+ dateTime.getFullYear().toString();
+    const orders = {
+      product_name : this.f.product_name.value,
+      product_quantity : this.f.product_quantity.value,
+      product_description : this.f.product_description.value,
+      product_price : this.f.product_price.value,
+      product_category : this.f.product_category.value,
+      product_discount : this.f.product_discount.value,
+      cart_user : currentUser,
+      product_image : this.product_image,
+      time : this.dT
+    }
+
+    this.products.push(orders);
+    localStorage.setItem('orders', JSON.stringify(this.products));
+    this.products = JSON.parse(localStorage.getItem('productData'));
+    this.products.find(x => {
+      if(x.product_name === this.f.product_name.value && x.product_category === this.f.product_category.value && x.product_price === this.f.product_price.value) {
+          x.product_quantity = x.product_quantity - this.f.product_quantity.value;
+      }
+    })
+
+    localStorage.setItem('productData', JSON.stringify(this.products));
+    this.router.navigate(['/previousOrders']);
 
   }
 
   PreOrders() {
-
+    this.router.navigate(['/previousOrders']);
   }
 
   ngOnInit(): void {
-    // this.sharedService.currentData.subscribe(data => {
-    //   this.products.push(data);
-    //   this.f.product_name.setValue(data.product_name);
-    //   this.f.product_quantity.setValue(data.product_quantity);
-    //   this.f.product_price.setValue(data.product_price);
-    //   this.f.product_description.setValue(data.product_description);
-    //   this.f.product_discount.setValue(data.product_discount);
-    //   this.f.product_category.setValue(data.product_category);
-    // })
-
+    
     this.form = this.formBuilder.group({
       product_name: ['', Validators.required],
       product_quantity: ['', Validators.required],
@@ -61,7 +83,7 @@ export class BuyProductComponent implements OnInit {
       this.f.product_discount.setValue(data.product_discount);
       this.f.product_category.setValue(data.product_category);
       this.product_image = data.product_image;
-      console.log(data);
+      //console.log(data);
     })
   }
 

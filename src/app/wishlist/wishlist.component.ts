@@ -23,8 +23,9 @@ export class WishlistComponent implements OnInit {
     this.router.navigate(['/wishlist']);
   }
 
-  PreOrders() {
 
+  PreOrders() {
+    this.router.navigate(['/previousOrders']);
   }
 
   toCart(data) {
@@ -41,7 +42,8 @@ export class WishlistComponent implements OnInit {
         product_discount: data.product_discount,
         product_image: data.product_image,
         product_category : data.product_category,
-        cart_user: this.currentUser
+        cart_user: this.currentUser,
+        product_quantity : data.product_quantity
       }
       this.allProducts.push(cartData);
       console.log(this.allProducts);

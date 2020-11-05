@@ -1,6 +1,7 @@
 import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-cart-data',
@@ -11,11 +12,11 @@ export class CartDataComponent implements OnInit {
   allProducts: any;
   products: any = [];
   searchText : string;
-  constructor(private router: Router) { }
+  constructor(private router: Router, private sharedService : SharedService) { }
 
   toBuy(data) {
-
-
+    this.sharedService.sendProductData(data);
+    this.router.navigate(['/buyProduct']);
   }
 
   Wishlist() {
@@ -23,7 +24,7 @@ export class CartDataComponent implements OnInit {
   }
 
   PreOrders() {
-
+    this.router.navigate(['/previousOrders']);
   }
 
   onLogout() {

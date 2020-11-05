@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FilterPipe } from './filter.pipe';
 import { BuyProductComponent } from './buy-product/buy-product.component';
+import { PreviousOrdersComponent } from './previous-orders/previous-orders.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { BuyProductComponent } from './buy-product/buy-product.component';
     CartDataComponent,
     WishlistComponent,
     FilterPipe,
-    BuyProductComponent
+    BuyProductComponent,
+    PreviousOrdersComponent
   ],
   imports: [
     BrowserModule,

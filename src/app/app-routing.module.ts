@@ -6,6 +6,7 @@ import { BuyProductComponent } from './buy-product/buy-product.component';
 import { CartDataComponent } from './cart-data/cart-data.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { PreviousOrdersComponent } from './previous-orders/previous-orders.component';
 import { RegisterComponent } from './register/register.component';
 import { UpdateItemComponent } from './update-item/update-item.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
@@ -47,6 +48,10 @@ const routes: Routes = [
   {
     path: "buyProduct",
     component: BuyProductComponent
+  },
+  {
+    path: "previousOrders",
+    component: PreviousOrdersComponent
   }
 ];
 

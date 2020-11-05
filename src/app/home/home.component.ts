@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
   }
 
   PreOrders() {
-
+    this.router.navigate(['/previousOrders']);
   }
 
   Wishlist() {
@@ -45,6 +45,7 @@ export class HomeComponent implements OnInit {
       product_discount: data.product_discount,
       product_image: data.product_image,
       product_category : data.product_category,
+      product_quantity : data.product_quantity,
       cart_user: currentUser
     }
     //console.log(cartData);
@@ -68,7 +69,8 @@ export class HomeComponent implements OnInit {
       product_image: data.product_image,
       cart_user: currentUser,
       product_discount: data.product_discount,
-      product_category : data.product_category
+      product_category : data.product_category,
+      product_quantity : data.product_quantity
     }
     this.wish_list = JSON.parse(localStorage.getItem('wishlist')) || [];
     let wlist = this.wish_list.find(x => x.cart_user === currentUser && x.product_name === data.product_name && x.product_description === data.product_description && x.product_price === data.product_price);
