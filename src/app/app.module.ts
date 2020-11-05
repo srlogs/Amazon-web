@@ -11,7 +11,7 @@ import { AdminInventoryComponent } from './admin-inventory/admin-inventory.compo
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { AddItemComponent } from './add-item/add-item.component';
 import { UpdateItemComponent } from './update-item/update-item.component';
-import { UserNavBarComponent } from './user-nav-bar/user-nav-bar.component';
+
 import { CartDataComponent } from './cart-data/cart-data.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -32,7 +32,6 @@ import { FilterPipe } from './filter.pipe';
     NavBarComponent,
     AddItemComponent,
     UpdateItemComponent,
-    UserNavBarComponent,
     CartDataComponent,
     WishlistComponent,
     FilterPipe
