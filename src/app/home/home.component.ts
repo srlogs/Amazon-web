@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { SharedService } from '../shared.service';
+import { interval, Subscription } from 'rxjs';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -14,7 +15,7 @@ export class HomeComponent implements OnInit {
   searchText : string;
   allProducts : any;
   temp : any = [];
-
+  subscription : Subscription;
   
   constructor(private http: HttpClient, private router: Router, private sharedService : SharedService) { }
 
@@ -83,9 +84,19 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  refreshFunction() {
+    console.log("function calling");
+    this.products = JSON.parse(localStorage.getItem('productData'));
+  }
 
   ngOnInit(): void {
     this.products = JSON.parse(localStorage.getItem('productData'));
+    const source = interval(10000);
+    this.subscription = source.subscribe(val => this.refreshFunction());
+  }
+
+  ngOnDestroy() {
+    this.subscription && this.subscription.unsubscribe();
   }
 
 }
