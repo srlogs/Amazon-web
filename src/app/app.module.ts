@@ -8,7 +8,6 @@ import { RegisterComponent } from './register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { AdminInventoryComponent } from './admin-inventory/admin-inventory.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { AddItemComponent } from './add-item/add-item.component';
 import { UpdateItemComponent } from './update-item/update-item.component';
 
@@ -19,9 +18,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FilterPipe } from './filter.pipe';
 
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +25,6 @@ import { FilterPipe } from './filter.pipe';
     RegisterComponent,
     HomeComponent,
     AdminInventoryComponent,
-    NavBarComponent,
     AddItemComponent,
     UpdateItemComponent,
     CartDataComponent,

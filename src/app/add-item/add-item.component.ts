@@ -24,6 +24,7 @@ export class AddItemComponent implements OnInit {
   pdesc : string;
   pdisc : string;
   pcat : string;
+  searchText : string;
   constructor(private formBuilder : FormBuilder, private router : Router) { }
 
   onFileSelected(event) {
@@ -61,6 +62,11 @@ export class AddItemComponent implements OnInit {
     this.form.reset();
     console.log(this.myInputVariable.nativeElement.value);
     this.myInputVariable.nativeElement.value = "";
+  }
+
+  onLogout() {
+    localStorage.removeItem('admin');
+    this.router.navigate(['/']);
   }
 
   setValueNull() {

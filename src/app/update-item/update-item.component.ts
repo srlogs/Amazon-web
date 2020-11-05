@@ -16,6 +16,7 @@ export class UpdateItemComponent implements OnInit {
   selectedFile: File = null;
   products: any;
   product_image: any;
+  searchText : string;
   constructor(private adminInventory: AdminInventoryComponent, private sharedService: SharedService, private formBuilder: FormBuilder, private router : Router) { }
 
   onSubmit() {
@@ -29,6 +30,11 @@ export class UpdateItemComponent implements OnInit {
 
     localStorage.setItem('productData', JSON.stringify(this.products));
     this.router.navigate(['/adminInventory']);
+  }
+
+  onLogout() {
+    localStorage.removeItem('admin');
+    this.router.navigate(['/']);
   }
 
   ngOnInit(): void {

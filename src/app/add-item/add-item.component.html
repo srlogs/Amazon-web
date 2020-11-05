@@ -1,4 +1,28 @@
-<app-nav-bar></app-nav-bar>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Welcome to E-commerce site</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink='/adminInventory'>Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/addItem">Add Item</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-3" type="search" [(ngModel)]="searchText" name="search"
+        placeholder="Search for products" aria-label="Search" style="width: 600px;">
+    </form>
+    <form class="form-inline my-2 my-lg-0">
+      <button class="btn btn-outline-success my-2 my-sm-0" (click)="onLogout()">Logout</button>
+    </form>
+  </div>
+</nav>
+
 
 <div *ngIf="isSuccess">
   <div class="alert alert-success" role="alert">

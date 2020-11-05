@@ -14,7 +14,13 @@ export class AdminInventoryComponent implements OnInit {
 
   private subject = new Subject<any>();
   products : any;
+  searchText : string;
   constructor(private router : Router, private sharedService : SharedService) { 
+  }
+
+  onLogout() {
+    localStorage.removeItem('admin');
+    this.router.navigate(['/']);
   }
 
   onUpdate(data) {
