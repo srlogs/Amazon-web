@@ -24,6 +24,7 @@ export class AddItemComponent implements OnInit {
   pdesc : string;
   pdisc : string;
   pcat : string;
+  submitted = false;
   searchText : string;
   constructor(private formBuilder : FormBuilder, private router : Router) { }
 
@@ -33,6 +34,10 @@ export class AddItemComponent implements OnInit {
   }
 
   onSubmit() {
+    this.submitted = true;
+    if(this.form.invalid) {
+      return;
+    }
     this.productData = JSON.parse(localStorage.getItem('productData')) || [];
     let len = this.productData.length;
     this.pname = this.f.product_name.value;
@@ -59,6 +64,7 @@ export class AddItemComponent implements OnInit {
       localStorage.setItem('productData', JSON.stringify(this.productData));
       console.log(product_data);
     })
+    this.router.navigate(['/adminInventory']);
     this.form.reset();
     console.log(this.myInputVariable.nativeElement.value);
     this.myInputVariable.nativeElement.value = "";
@@ -78,8 +84,9 @@ export class AddItemComponent implements OnInit {
       product_quantity : ['', Validators.required],
       product_price : ['', Validators.required],
       product_description : ['', Validators.required],
-      product_discount : [' ', Validators.required],
-      product_category : ['', Validators.required]
+      product_discount : ['', Validators.required],
+      product_category : ['', Validators.required],
+      imageInput : ['', Validators.required]
     })
   }
 

@@ -15,6 +15,7 @@ export class BuyProductComponent implements OnInit {
   form: FormGroup;
   product_image : any;
   dT : any;
+  submitted = false;
   constructor(private sharedService: SharedService, private router: Router, private formBuilder: FormBuilder) { }
 
   onLogout() {
@@ -27,6 +28,10 @@ export class BuyProductComponent implements OnInit {
   }
 
   onSubmit() {
+    this.submitted = true;
+    if(this.form.invalid) {
+      return;
+    }
     this.products = JSON.parse(localStorage.getItem('orders')) ||[];
     let currentUser = localStorage.getItem('currentUser');
     const monthNames = ["January", "February", "March", "April", "May", "June",
@@ -65,19 +70,19 @@ export class BuyProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+    let numericRegex = /^[a-zA-Z0-9]+$/;
     this.form = this.formBuilder.group({
       product_name: ['', Validators.required],
-      product_quantity: ['', Validators.required],
+      product_quantity: ['', [Validators.required, Validators.pattern(numericRegex)]],
       product_price: ['', Validators.required],
       product_description: ['', Validators.required],
-      product_discount: [' ', Validators.required],
+      product_discount: ['', Validators.required],
       product_category: ['', Validators.required]
     })
 
     this.sharedService.currentData.subscribe(data => {
       this.f.product_name.setValue(data.product_name);
-      this.f.product_quantity.setValue(data.product_quantity);
+      this.f.product_quantity.setValue(1);
       this.f.product_price.setValue(data.product_price);
       this.f.product_description.setValue(data.product_description);
       this.f.product_discount.setValue(data.product_discount);

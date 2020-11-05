@@ -12,6 +12,7 @@ export class PreviousOrdersComponent implements OnInit {
   searchText : string;
   products : any = [];
   allProducts : any = [];
+  isEmpty : boolean = false;
   constructor(private router: Router, private sharedService : SharedService) { }
 
   toBuy(data) {
@@ -40,6 +41,9 @@ export class PreviousOrdersComponent implements OnInit {
         this.products.push(x);
       }
     })
+    if(this.products.length === 0) {
+      this.isEmpty = true;
+    }
     console.log(this.products);
   }
 

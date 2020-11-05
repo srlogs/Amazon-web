@@ -12,6 +12,7 @@ export class WishlistComponent implements OnInit {
   currentUser: any;
   cart_data: any;
   searchText : string;
+  isEmpty : boolean = false;
   constructor(private router: Router) { }
 
   onLogout() {
@@ -66,6 +67,9 @@ export class WishlistComponent implements OnInit {
         this.products.push(x);
       }
     })
+    if(this.products.length === 0) {
+      this.isEmpty = true;
+    }
     //window.location.reload();
   }
 
@@ -78,5 +82,8 @@ export class WishlistComponent implements OnInit {
         //console.log(this.products);
       }
     })
+    if(this.products.length === 0) {
+      this.isEmpty = true;
+    }
   }
 }

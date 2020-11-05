@@ -12,6 +12,7 @@ export class CartDataComponent implements OnInit {
   allProducts: any;
   products: any = [];
   searchText : string;
+  isEmpty : boolean = false;
   constructor(private router: Router, private sharedService : SharedService) { }
 
   toBuy(data) {
@@ -44,6 +45,9 @@ export class CartDataComponent implements OnInit {
         this.products.push(x);
       }
     })
+    if(this.products.length === 0) {
+      this.isEmpty = true;
+    }
   }
 
   ngOnInit(): void {
@@ -54,5 +58,8 @@ export class CartDataComponent implements OnInit {
         this.products.push(x);
       }
     })
+    if(this.products.length === 0) {
+      this.isEmpty = true;
+    }
   }
 }

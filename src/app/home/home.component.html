@@ -36,6 +36,9 @@
 </nav>
 
 <!-- navigation bar ends -->
+<div class="d-flex justify-content-center align-items-center" *ngIf = "isEmpty">
+  <h1 class="h2" style="margin-top: 10%;"> No products available. Please contact admin! </h1>
+</div>
 
 <div *ngFor="let product of products | filter : searchText">
   <div class="card mb-3" style="max-width: 75%; margin-left: 30px;">

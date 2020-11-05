@@ -23,7 +23,13 @@
   </div>
 </nav>
 
+<!-- navigation bar ends here -->
 
+<div class="d-flex justify-content-center align-items-center" style="margin-top: 10%;" *ngIf = "isEmpty">
+  <h1 class="h1">No items available.</h1>
+  <br><br>
+  <h2 class="h2">Go to "Add item"</h2>
+</div>
 
 <div *ngFor="let product of products | filter : searchText">
   <div class="card mb-3" style="max-width: 75%; margin-left: 30px;">

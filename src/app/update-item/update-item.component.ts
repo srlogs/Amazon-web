@@ -17,9 +17,14 @@ export class UpdateItemComponent implements OnInit {
   products: any;
   product_image: any;
   searchText : string;
+  submitted = false;
   constructor(private adminInventory: AdminInventoryComponent, private sharedService: SharedService, private formBuilder: FormBuilder, private router : Router) { }
 
   onSubmit() {
+    this.submitted = true;
+    if(this.form.invalid) {
+      return;
+    }
     this.products = JSON.parse(localStorage.getItem('productData'));
     this.products.find(x => {
       if (x.product_name === this.f.product_name.value && x.product_price === this.f.product_price.value && x.product_description === this.f.product_description.value) {
