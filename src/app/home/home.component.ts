@@ -23,6 +23,10 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
+  toBuy(data) {
+    this.sharedService.sendProductData(data);
+    this.router.navigate(['/buyProduct']);
+  }
 
   PreOrders() {
 
