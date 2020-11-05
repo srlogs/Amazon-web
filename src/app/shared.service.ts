@@ -6,6 +6,8 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 export class SharedService {
 
   private productData = new BehaviorSubject<any>([]);
+  private searchData = new BehaviorSubject<string>("default-value");
+  search_data = this.searchData.asObservable();
   currentData = this.productData.asObservable();
   private dataSource = new Subject<any>();
   
@@ -15,6 +17,11 @@ export class SharedService {
     this.dataSource.next(data);
     this.productData.next(data);
   }
+
+  sendSearchResult(data : string) {
+    this.searchData.next(data);
+  }
+
 
   getProductData() : Observable<any> {
     return this.dataSource.asObservable();

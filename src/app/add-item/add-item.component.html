@@ -33,6 +33,10 @@
       <input type="number" id="productDiscount" formControlName="product_discount" class="form-control">
     </div>
     <div class="form-group">
+      <label> Category: </label>
+      <input type="text" id="productCategory" formControlName="product_category" class="form-control">
+    </div>
+    <div class="form-group">
       <label> Preview Image: </label>
       <input #myInput type="file" id="image" (change)="onFileSelected($event)" class="form-control-file">
     </div>

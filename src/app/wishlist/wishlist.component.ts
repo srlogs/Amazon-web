@@ -11,7 +11,21 @@ export class WishlistComponent implements OnInit {
   allProducts: any;
   currentUser: any;
   cart_data: any;
+  searchText : string;
   constructor(private router: Router) { }
+
+  onLogout() {
+    localStorage.removeItem('currentUser');
+    this.router.navigate(['/']);
+  }
+
+  Wishlist() {
+    this.router.navigate(['/wishlist']);
+  }
+
+  PreOrders() {
+
+  }
 
   toCart(data) {
     this.allProducts = JSON.parse(localStorage.getItem('cartData')) || [];
@@ -26,6 +40,7 @@ export class WishlistComponent implements OnInit {
         product_description: data.product_description,
         product_discount: data.product_discount,
         product_image: data.product_image,
+        product_category : data.product_category,
         cart_user: this.currentUser
       }
       this.allProducts.push(cartData);

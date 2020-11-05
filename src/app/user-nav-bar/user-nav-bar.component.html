@@ -12,43 +12,24 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/cart">My cart</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/wishlist">Wish List</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/">History</a>
-      </li>
-      <!-- <mat-form-field appearance="fill">
-        <mat-label>Favorite food</mat-label>
-        <mat-select>
-          <mat-option *ngFor="let food of foods" [value]="food.value">
-            {{food.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field> -->
-      
     </ul>
     <div class="row mr-2">
       <div class="col">
         <div ngbDropdown class="d-inline-block">
           <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Filter</button>
           <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <button ngbDropdownItem (click) = "Category()">Category</button>
-            <button ngbDropdownItem (click) = "Wishlist()">Wishlist</button>
-            <button ngbDropdownItem (click) = "PreOrders()"> Previous orders</button>
+            <button ngbDropdownItem (click)="Wishlist()">Wishlist</button>
+            <button ngbDropdownItem (click)="PreOrders()"> Previous orders</button>
           </div>
         </div>
       </div>
-      </div>
+    </div>
 
-
-    <form class="form-inline my-3 my-lg-0 mr-4" [formGroup]="form" (ngSubmit)="onSearch()">
-      <div class="form-group">
-        <input class="form-control mr-3" type="search" id="search" formControlName="searchField" placeholder="Search"
-          aria-label="Search">
-        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-      </div>
+    <form class="form-inline my-2 my-lg-0" (submit) = "onSearch()">
+      <input class="form-control mr-sm-3" type="search" [(ngModel)] = "searchText" name="search" placeholder="Search for products" aria-label="Search" style="width: 600px;">
+      <button class="btn btn-outline-primary my-2 my-sm-0 mr-2" type="submit">Search</button>
     </form>
+
 
     <form class="form-inline my-2 my-lg-0">
       <button class="btn btn-outline-success my-2 my-sm-0" (click)="onLogout()">Logout</button>

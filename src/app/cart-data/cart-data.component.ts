@@ -10,10 +10,25 @@ import { Router } from '@angular/router';
 export class CartDataComponent implements OnInit {
   allProducts: any;
   products: any = [];
+  searchText : string;
   constructor(private router: Router) { }
 
   toBuy(data) {
 
+
+  }
+
+  Wishlist() {
+    this.router.navigate(['/wishlist']);
+  }
+
+  PreOrders() {
+
+  }
+
+  onLogout() {
+    localStorage.removeItem('currentUser');
+    this.router.navigate(['/']);
   }
 
   toRemove(data) {

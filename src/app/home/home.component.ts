@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { SharedService } from '../shared.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -10,8 +11,27 @@ export class HomeComponent implements OnInit {
   cart_data: any;
   wish_list: any;
   products: any;
-  constructor(private http: HttpClient, private router: Router) { }
+  searchText : string;
+  allProducts : any;
+  temp : any = [];
 
+  
+  constructor(private http: HttpClient, private router: Router, private sharedService : SharedService) { }
+
+  onLogout() {
+    localStorage.removeItem('currentUser');
+    this.router.navigate(['/']);
+  }
+
+
+  PreOrders() {
+
+  }
+
+  Wishlist() {
+    this.router.navigate(['/wishlist']);
+  } 
+ 
   toCart(data) {
     var currentUser = localStorage.getItem('currentUser');
     const cartData = {
@@ -20,6 +40,7 @@ export class HomeComponent implements OnInit {
       product_description: data.product_description,
       product_discount: data.product_discount,
       product_image: data.product_image,
+      product_category : data.product_category,
       cart_user: currentUser
     }
     //console.log(cartData);
@@ -42,7 +63,8 @@ export class HomeComponent implements OnInit {
       product_description: data.product_description,
       product_image: data.product_image,
       cart_user: currentUser,
-      product_discount: data.product_discount
+      product_discount: data.product_discount,
+      product_category : data.product_category
     }
     this.wish_list = JSON.parse(localStorage.getItem('wishlist')) || [];
     let wlist = this.wish_list.find(x => x.cart_user === currentUser && x.product_name === data.product_name && x.product_description === data.product_description && x.product_price === data.product_price);

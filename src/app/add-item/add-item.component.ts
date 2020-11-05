@@ -23,6 +23,7 @@ export class AddItemComponent implements OnInit {
   pprice : string;
   pdesc : string;
   pdisc : string;
+  pcat : string;
   constructor(private formBuilder : FormBuilder, private router : Router) { }
 
   onFileSelected(event) {
@@ -38,7 +39,7 @@ export class AddItemComponent implements OnInit {
     this.pprice = this.f.product_price.value;
     this.pdesc = this.f.product_description.value;
     this.pdisc = this.f.product_discount.value;
-
+    this.pcat = this.f.product_category.value;
 
     const reader = new FileReader();
     reader.readAsDataURL(this.selectedFile);
@@ -50,6 +51,7 @@ export class AddItemComponent implements OnInit {
         product_price : this.pprice,
         product_description : this.pdesc,
         product_discount : this.pdisc,
+        product_category : this.pcat,
         product_image : this.selectedFile.name
       }
       this.productData.push(product_data);
@@ -70,7 +72,8 @@ export class AddItemComponent implements OnInit {
       product_quantity : ['', Validators.required],
       product_price : ['', Validators.required],
       product_description : ['', Validators.required],
-      product_discount : [' ', Validators.required]
+      product_discount : [' ', Validators.required],
+      product_category : ['', Validators.required]
     })
   }
 

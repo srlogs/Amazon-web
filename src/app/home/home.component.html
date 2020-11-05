@@ -1,7 +1,43 @@
-<app-user-nav-bar></app-user-nav-bar>
+<!-- navigation bar starts -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-2">
+  <a class="navbar-brand" href="#">Welcome to E-commerce site</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink='/home'>Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/cart">My cart</a>
+      </li>
+    </ul>
+    <div class="row mr-2">
+      <div class="col">
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Filter</button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem (click)="Wishlist()">Wishlist</button>
+            <button ngbDropdownItem (click)="PreOrders()"> Previous orders</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-3" type="search" [(ngModel)]="searchText" name="search"
+        placeholder="Search for products" aria-label="Search" style="width: 600px;">
+    </form>
+    <form class="form-inline my-2 my-lg-0">
+      <button class="btn btn-outline-success my-2 my-sm-0" (click)="onLogout()">Logout</button>
+    </form>
+  </div>
+</nav>
 
+<!-- navigation bar ends -->
 
-<div *ngFor="let product of products">
+<div *ngFor="let product of products | filter : searchText">
   <div class="card mb-3" style="max-width: 75%; margin-left: 30px;">
     <div class="row no-gutters">
       <div class="col-md-4">
@@ -15,9 +51,9 @@
           <p class="card-text"> Description : {{product.product_description}} </p>
           <p class="card-text"> Discount : {{product.product_discount}} </p>
           <div class="col-md-16">
-            <button type="button" class="btn btn-primary mr-4" (click) = "toCart(product)" >Add to cart</button>
+            <button type="button" class="btn btn-primary mr-4" (click)="toCart(product)">Add to cart</button>
             <button type="button" class="btn btn-success mr-4 pr-4 pl-4">Buy</button>
-            <button type="button" class="btn btn-secondary mr-4" (click) = "toWishList(product)">Wishlist</button>
+            <button type="button" class="btn btn-secondary mr-4" (click)="toWishList(product)">Wishlist</button>
           </div>
         </div>
       </div>

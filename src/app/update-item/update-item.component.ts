@@ -38,7 +38,8 @@ export class UpdateItemComponent implements OnInit {
       product_quantity: ['', Validators.required],
       product_price: ['', Validators.required],
       product_description: ['', Validators.required],
-      product_discount: [' ', Validators.required]
+      product_discount: [' ', Validators.required],
+      product_category : ['', Validators.required]
     })
 
 
@@ -49,6 +50,7 @@ export class UpdateItemComponent implements OnInit {
       this.f.product_price.setValue(data.product_price);
       this.f.product_description.setValue(data.product_description);
       this.f.product_discount.setValue(data.product_discount);
+      this.f.product_category.setValue(data.product_category);
       this.product_image = data.product_image;
       console.log(data);
     })
