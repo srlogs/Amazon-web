@@ -11,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { UpdateItemComponent } from './update-item/update-item.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { AuthGuard } from '../app/auth.guard'; 
+import { AuthGuardAdmin } from '../app/auth.guard.admin';
 
 const routes: Routes = [
   {
@@ -29,17 +30,17 @@ const routes: Routes = [
   {
     path: "adminInventory",
     component: AdminInventoryComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuardAdmin]
   }, 
   {
     path: "addItem",
     component: AddItemComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuardAdmin]
   },
   {
     path: "updateItem",
     component: UpdateItemComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuardAdmin]
   },
   {
     path: "cart",
