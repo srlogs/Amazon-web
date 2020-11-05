@@ -10,7 +10,7 @@ import { PreviousOrdersComponent } from './previous-orders/previous-orders.compo
 import { RegisterComponent } from './register/register.component';
 import { UpdateItemComponent } from './update-item/update-item.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
-
+import { AuthGuard } from '../app/auth.guard'; 
 
 const routes: Routes = [
   {
@@ -23,36 +23,45 @@ const routes: Routes = [
   },
   {
     path: "home",
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [AuthGuard]
   }, 
   {
     path: "adminInventory",
-    component: AdminInventoryComponent
+    component: AdminInventoryComponent,
+    canActivate: [AuthGuard]
   }, 
   {
     path: "addItem",
-    component: AddItemComponent
+    component: AddItemComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "updateItem",
-    component: UpdateItemComponent
+    component: UpdateItemComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "cart",
-    component: CartDataComponent
+    component: CartDataComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "wishlist",
-    component: WishlistComponent
+    component: WishlistComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "buyProduct",
-    component: BuyProductComponent
+    component: BuyProductComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "previousOrders",
-    component: PreviousOrdersComponent
-  }
+    component: PreviousOrdersComponent,
+    canActivate: [AuthGuard]
+  },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
