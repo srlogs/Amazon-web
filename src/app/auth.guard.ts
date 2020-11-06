@@ -13,7 +13,7 @@ export class AuthGuard implements CanActivate {
         const user = localStorage.getItem('currentUser');
         this.users = JSON.parse(localStorage.getItem('users')) ||[];
         let temp = this.users.find(x => x.email === user);
-        console.log("authguard", temp);
+        //console.log("authguard", temp);
         if(temp) {
             return true;
         }

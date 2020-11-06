@@ -1,0 +1,9 @@
+.big {
+    height: 10px;
+    width: 10px;
+  }
+   
+  .fill-red {
+    fill: red;
+    color: red;
+  }

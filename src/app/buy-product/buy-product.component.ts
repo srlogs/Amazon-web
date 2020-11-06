@@ -16,6 +16,7 @@ export class BuyProductComponent implements OnInit {
   product_image : any;
   dT : any;
   submitted = false;
+  quantity : number;
   constructor(private sharedService: SharedService, private router: Router, private formBuilder: FormBuilder) { }
 
   onLogout() {
@@ -71,17 +72,16 @@ export class BuyProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let numericRegex = /^[a-zA-Z0-9]+$/;
-    this.form = this.formBuilder.group({
-      product_name: ['', Validators.required],
-      product_quantity: ['', [Validators.required, Validators.pattern(numericRegex)]],
-      product_price: ['', Validators.required],
-      product_description: ['', Validators.required],
-      product_discount: ['', Validators.required],
-      product_category: ['', Validators.required]
-    })
-
+    let numericRegex = /^[1-9][0-9]*$/;
     this.sharedService.currentData.subscribe(data => {
+      this.form = this.formBuilder.group({
+        product_name: ['', Validators.required],
+        product_quantity: ['', [Validators.required, Validators.pattern(numericRegex), Validators.max(data.product_quantity)]],
+        product_price: ['', Validators.required],
+        product_description: ['', Validators.required],
+        product_discount: ['', Validators.required],
+        product_category: ['', Validators.required]
+      })
       this.f.product_name.setValue(data.product_name);
       this.f.product_quantity.setValue(1);
       this.f.product_price.setValue(data.product_price);
@@ -89,7 +89,8 @@ export class BuyProductComponent implements OnInit {
       this.f.product_discount.setValue(data.product_discount);
       this.f.product_category.setValue(data.product_category);
       this.product_image = data.product_image;
-      //console.log(data);
+      this.quantity = data.product_quantity;
+      console.log(this.quantity);
     })
   }
 

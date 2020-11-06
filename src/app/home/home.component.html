@@ -46,24 +46,32 @@
       <div class="col-md-5">
         <img src="assets/{{product.product_image}}" height="300px" width="350px">
       </div>
-      <div class="col-md-7">
+      <div class="col-md-5">
         <div class="card-body">
           <h5 class="card-title">Product name : {{product.product_name}}</h5>
-          <p class="card-text">Product Quantity : {{product.product_quantity}}</p>
-          <p class="card-text"> Original Price (in Rupees): <del *ngIf="product.product_discount"
-              style="color: red;">{{product.product_price}}</del>
-            <label *ngIf="!product.product_discount">{{product.product_price}}</label>
-          </p>
-          <p class="card-text" *ngIf="product.product_discount"> Discounted Price :<label style="color: green;">
-            {{product.product_price - (product.product_price * (product.product_discount / 100))}}</label> </p>
-          <p class="card-text"> Description : {{product.product_description}} </p>
-          <p class="card-text"> Discount : {{product.product_discount}}% </p>
-          <div class="col-md-16">
-            <button type="button" class="btn btn-primary mr-4" (click)="toCart(product)">Add to cart</button>
-            <button type="button" class="btn btn-success mr-4 pr-4 pl-4" (click)="toBuy(product)">Buy</button>
-            <button type="button" class="btn btn-secondary mr-4" (click)="toWishList(product)">Wishlist</button>
+          <div *ngIf = "product.product_quantity > 0">
+            <p class="card-text">Product Quantity : {{product.product_quantity}}</p>
+            <p class="card-text"> Original Price (in Rupees): <del *ngIf="product.product_discount"
+                style="color: red;">{{product.product_price}}</del>
+              <label *ngIf="!product.product_discount">{{product.product_price}}</label>
+            </p>
+            <p class="card-text" *ngIf="product.product_discount"> Discounted Price :<label style="color: green;">
+                {{product.product_price - (product.product_price * (product.product_discount / 100))}}</label> </p>
+            <p class="card-text"> Description : {{product.product_description}} </p>
+            <p class="card-text"> Discount : {{product.product_discount}}% </p>
+            <div class="col-md-16">
+              <button type="button" class="btn btn-primary mr-4" (click)="toCart(product)">Add to cart</button>
+              <button type="button" class="btn btn-success mr-4 pr-4 pl-4" (click)="toBuy(product)">Buy</button>
+              <button type="button" class="btn btn-secondary mr-4" (click)="toWishList(product)">Wishlist</button>
+            </div>
+          </div>
+          <div *ngIf = "product.product_quantity <= 0" class="mt-5">
+            <h3 class="h3" style="color: red;"> Out of Stock</h3>
           </div>
         </div>
+      </div>
+      <div class="col-md-2" >
+        <bi name="heart" class="big fill-red mr-2" style="float: right;"></bi>
       </div>
     </div>
   </div>

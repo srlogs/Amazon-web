@@ -17,7 +17,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FilterPipe } from './filter.pipe';
 import { BuyProductComponent } from './buy-product/buy-product.component';
 import { PreviousOrdersComponent } from './previous-orders/previous-orders.component';
-
+import { BootstrapIconsModule } from 'ng-bootstrap-icons';
+import { allIcons } from 'ng-bootstrap-icons/icons';
 
 
 @NgModule({
@@ -42,7 +43,11 @@ import { PreviousOrdersComponent } from './previous-orders/previous-orders.compo
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NgbModule
+    NgbModule,
+    BootstrapIconsModule.pick(allIcons)
+  ],
+  exports: [
+    BootstrapIconsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
