@@ -36,6 +36,7 @@ export class AddItemComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if(this.form.invalid) {
+      window.alert("error");
       return;
     }
     this.productData = JSON.parse(localStorage.getItem('productData')) || [];

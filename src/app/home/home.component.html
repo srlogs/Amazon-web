@@ -1,6 +1,6 @@
 <!-- navigation bar starts -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-2">
-  <a class="navbar-brand" routerLink="/home">Welcome to E-commerce site</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
+  <a class="navbar-brand" routerLink="/home">Logeshwaran</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -43,10 +43,10 @@
 <div *ngFor="let product of products | filter : searchText">
   <div class="card mb-3" style="max-width: 75%; margin-left: 30px;">
     <div class="row no-gutters">
-      <div class="col-md-4">
+      <div class="col-md-5">
         <img src="assets/{{product.product_image}}" height="300px" width="350px">
       </div>
-      <div class="col-md-8">
+      <div class="col-md-7">
         <div class="card-body">
           <h5 class="card-title">Product name : {{product.product_name}}</h5>
           <p class="card-text">Product Quantity : {{product.product_quantity}}</p>
