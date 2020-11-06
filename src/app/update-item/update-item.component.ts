@@ -34,6 +34,7 @@ export class UpdateItemComponent implements OnInit {
     })
 
     localStorage.setItem('productData', JSON.stringify(this.products));
+    window.alert("Product data updated");
     this.router.navigate(['/adminInventory']);
   }
 

@@ -42,9 +42,9 @@
         <div class="card-body">
           <h5 class="card-title">Product name : {{product.product_name}}</h5>
           <p class="card-text">Product Quantity : {{product.product_quantity}}</p>
-          <p class="card-text"> Price : {{product.product_price}} </p>
+          <p class="card-text"> Price (in Rupees): {{product.product_price}} </p>
           <p class="card-text"> Description : {{product.product_description}} </p>
-          <p class="card-text"> Discount : {{product.product_discount}} </p>
+          <p class="card-text"> Discount : {{product.product_discount}}% </p>
           <p class="card-text"> Category : {{product.product_category}} </p>
           <button type="button" class="btn btn-success" (click)="onUpdate(product)">Update</button>
         </div>

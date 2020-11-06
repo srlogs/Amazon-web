@@ -15,8 +15,10 @@ export class HomeComponent implements OnInit {
   searchText : string;
   allProducts : any;
   temp : any = [];
+  discount : any = [];
   subscription : Subscription;
   isEmpty : boolean = false;
+  discountAmount : any;
   constructor(private http: HttpClient, private router: Router, private sharedService : SharedService) { }
 
   onLogout() {
@@ -93,6 +95,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.discount = [];
     this.products = JSON.parse(localStorage.getItem('productData')) || [];
     const source = interval(10000);
     this.subscription = source.subscribe(val => this.refreshFunction());

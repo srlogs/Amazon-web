@@ -49,9 +49,9 @@
       <div class="col-md-7">
         <div class="card-body">
           <h5 class="card-title">Product name : {{product.product_name}}</h5>
-          <p class="card-text"> Price : {{product.product_price}} </p>
+          <p class="card-text"> Price (in Rupees): {{product.product_price}} </p>
           <p class="card-text"> Description : {{product.product_description}} </p>
-          <p class="card-text"> Discount : {{product.product_discount}} </p>
+          <p class="card-text"> Discount : {{product.product_discount}}% </p>
           <button type="button" class="btn btn-success" (click)="toBuy(product)">Proceed to checkout</button>
           <button type="button" class="btn btn-danger ml-3" (click)="toRemove(product)">Remove item</button>
         </div>

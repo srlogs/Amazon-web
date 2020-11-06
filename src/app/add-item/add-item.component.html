@@ -53,7 +53,7 @@
       </div>
     </div>
     <div class="form-group">
-      <label> Price: </label>
+      <label> Price (in Rupees): </label>
       <input type="number" id="productPrice" formControlName="product_price" class="form-control"
         [ngClass]="{ 'is-invalid': submitted && f.product_price.errors }">
       <div *ngIf="submitted && f.product_price.errors" class="invalid-feedback">
@@ -69,7 +69,7 @@
       </div>
     </div>
     <div class="form-group">
-      <label> Discount: </label>
+      <label> Discount (in Percentage): </label>
       <input type="number" id="productDiscount" formControlName="product_discount" class="form-control"
         [ngClass]="{ 'is-invalid': submitted && f.product_discount.errors }">
       <div *ngIf="submitted && f.product_discount.errors" class="invalid-feedback">

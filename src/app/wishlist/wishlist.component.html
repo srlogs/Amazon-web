@@ -50,7 +50,7 @@
         <div class="card-body">
           <h5 class="card-title">Product name : {{product.product_name}}</h5>
           <p class="card-text"> Description : {{product.product_description}} </p>
-          <p class="card-text"> Price : {{product.product_price}} </p>
+          <p class="card-text"> Price (in Rupees): {{product.product_price}} </p>
           <button type="button" class="btn btn-success" (click)="toCart(product)">Add to cart</button>
           <button type="button" class="btn btn-danger ml-3" (click)="toRemove(product)">Remove item</button>
         </div>

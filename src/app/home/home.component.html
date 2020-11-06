@@ -36,11 +36,11 @@
 </nav>
 
 <!-- navigation bar ends -->
-<div class="d-flex justify-content-center align-items-center" *ngIf = "isEmpty">
+<div class="d-flex justify-content-center align-items-center" *ngIf="isEmpty">
   <h1 class="h2" style="margin-top: 10%;"> No products available. Please contact admin! </h1>
 </div>
 
-<div *ngFor="let product of products | filter : searchText">
+<div *ngFor="let product of products | filter : searchText; let i = index">
   <div class="card mb-3" style="max-width: 75%; margin-left: 30px;">
     <div class="row no-gutters">
       <div class="col-md-5">
@@ -50,12 +50,17 @@
         <div class="card-body">
           <h5 class="card-title">Product name : {{product.product_name}}</h5>
           <p class="card-text">Product Quantity : {{product.product_quantity}}</p>
-          <p class="card-text"> Price : {{product.product_price}} </p>
+          <p class="card-text"> Original Price (in Rupees): <del *ngIf="product.product_discount"
+              style="color: red;">{{product.product_price}}</del>
+            <label *ngIf="!product.product_discount">{{product.product_price}}</label>
+          </p>
+          <p class="card-text" *ngIf="product.product_discount"> Discounted Price :<label style="color: green;">
+            {{product.product_price - (product.product_price * (product.product_discount / 100))}}</label> </p>
           <p class="card-text"> Description : {{product.product_description}} </p>
-          <p class="card-text"> Discount : {{product.product_discount}} </p>
+          <p class="card-text"> Discount : {{product.product_discount}}% </p>
           <div class="col-md-16">
             <button type="button" class="btn btn-primary mr-4" (click)="toCart(product)">Add to cart</button>
-            <button type="button" class="btn btn-success mr-4 pr-4 pl-4" (click) = "toBuy(product)">Buy</button>
+            <button type="button" class="btn btn-success mr-4 pr-4 pl-4" (click)="toBuy(product)">Buy</button>
             <button type="button" class="btn btn-secondary mr-4" (click)="toWishList(product)">Wishlist</button>
           </div>
         </div>

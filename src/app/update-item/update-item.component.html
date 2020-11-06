@@ -47,7 +47,7 @@
       </div>
     </div>
     <div class="form-group">
-      <label> Price: </label>
+      <label> Price (in Rupees): </label>
       <input type="number" readonly id="productPrice" formControlName="product_price" class="form-control">
     </div>
     <div class="form-group">
@@ -55,7 +55,7 @@
       <textarea readonly formControlName="product_description" id="description" class="form-control"></textarea>
     </div>
     <div class="form-group">
-      <label> Discount: </label>
+      <label> Discount (in Percentage): </label>
       <input type="number" id="productDiscount" formControlName="product_discount" class="form-control"
         [ngClass]="{ 'is-invalid': submitted && f.product_discount.errors }">
       <div *ngIf="submitted && f.product_discount.errors" class="invalid-feedback">

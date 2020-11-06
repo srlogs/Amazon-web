@@ -19,6 +19,7 @@ import { BuyProductComponent } from './buy-product/buy-product.component';
 import { PreviousOrdersComponent } from './previous-orders/previous-orders.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

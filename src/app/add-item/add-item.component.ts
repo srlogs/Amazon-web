@@ -69,6 +69,7 @@ export class AddItemComponent implements OnInit {
     // this.form.reset();
     // console.log(this.myInputVariable.nativeElement.value);
     // this.myInputVariable.nativeElement.value = "";
+    window.alert("New item added successfully")
     window.location.reload();
   }
 

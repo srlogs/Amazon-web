@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
 
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
-      phone: ['', Validators.required],
+      phone: ['', Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")],
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
