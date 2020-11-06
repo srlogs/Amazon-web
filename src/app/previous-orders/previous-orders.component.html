@@ -41,7 +41,7 @@
   </div>
 
   <div *ngFor="let product of products | filter : searchText">
-    <div class="card mb-3" style="max-width: 75%; margin-left: 30px;">
+    <div class="card mb-3" style="max-width: 85%; margin-left: 30px;">
       <div class="row no-gutters">
         <div class="col-md-5">
           <img src="assets/{{product.product_image}}" height="300px" width="350px">
@@ -53,7 +53,8 @@
             <p class="card-text"> Price (in Rupees): {{product.product_price}} </p>
             <p class="card-text"> Quantity : {{product.product_quantity}} </p>
             <p class="card-text"> Purchase time: {{product.time}} </p>
-            <p class="card-text" style="color: green;"> Purchase Successfull! </p>
+            <button class="btn btn-success" *ngIf = "product.purchased === 0" (click) = "onConfirm(product)">Confirm Order</button>
+            <p class="card-text" *ngIf = "product.purchased === 1" style="color: green;"> Purchase Successfull! </p>
           </div>
         </div>
       </div>

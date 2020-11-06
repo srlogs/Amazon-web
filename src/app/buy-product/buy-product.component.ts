@@ -48,6 +48,7 @@ export class BuyProductComponent implements OnInit {
       product_discount : this.f.product_discount.value,
       cart_user : currentUser,
       product_image : this.product_image,
+      purchased : 0,
       time : this.dT
     }
 
