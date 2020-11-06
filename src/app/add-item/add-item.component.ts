@@ -64,10 +64,11 @@ export class AddItemComponent implements OnInit {
       localStorage.setItem('productData', JSON.stringify(this.productData));
       console.log(product_data);
     })
-    this.router.navigate(['/adminInventory']);
-    this.form.reset();
-    console.log(this.myInputVariable.nativeElement.value);
-    this.myInputVariable.nativeElement.value = "";
+    // this.router.navigate(['/adminInventory']);
+    // this.form.reset();
+    // console.log(this.myInputVariable.nativeElement.value);
+    // this.myInputVariable.nativeElement.value = "";
+    window.location.reload();
   }
 
   onLogout() {

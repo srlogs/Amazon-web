@@ -10,7 +10,6 @@ import { HomeComponent } from './home/home.component';
 import { AdminInventoryComponent } from './admin-inventory/admin-inventory.component';
 import { AddItemComponent } from './add-item/add-item.component';
 import { UpdateItemComponent } from './update-item/update-item.component';
-
 import { CartDataComponent } from './cart-data/cart-data.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
+import { interval, Observable, Subject, Subscription } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { SharedService } from '../shared.service';
 
@@ -16,6 +16,7 @@ export class AdminInventoryComponent implements OnInit {
   products : any;
   searchText : string;
   isEmpty : boolean = false;
+  subscription : Subscription;
   constructor(private router : Router, private sharedService : SharedService) { 
   }
 
@@ -33,12 +34,21 @@ export class AdminInventoryComponent implements OnInit {
     return this.subject.asObservable();
   }
 
-
-  ngOnInit(): void {
-    this.products = JSON.parse(localStorage.getItem('productData'));
+  refreshFunction() {
+    this.products = JSON.parse(localStorage.getItem('productData')) || [];
     if(this.products.length === 0) {
       this.isEmpty = true;
     }
+  }
+
+  ngOnInit(): void {
+    this.products = JSON.parse(localStorage.getItem('productData')) || [];
+    if(this.products.length === 0) {
+      this.isEmpty = true;
+    }
+    console.log(this.products);
+    const source = interval(1000);
+    this.subscription = source.subscribe(val => this.refreshFunction);
   }
 
 }

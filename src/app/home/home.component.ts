@@ -86,14 +86,14 @@ export class HomeComponent implements OnInit {
 
   refreshFunction() {
     console.log("function calling");
-    this.products = JSON.parse(localStorage.getItem('productData'));
+    this.products = JSON.parse(localStorage.getItem('productData')) || [];
     if(this.products.length === 0) {
       this.isEmpty = true;
     }
   }
 
   ngOnInit(): void {
-    this.products = JSON.parse(localStorage.getItem('productData'));
+    this.products = JSON.parse(localStorage.getItem('productData')) || [];
     const source = interval(10000);
     this.subscription = source.subscribe(val => this.refreshFunction());
     if(this.products.length === 0) {
