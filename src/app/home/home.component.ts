@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   subscription : Subscription;
   isEmpty : boolean = false;
   discountAmount : any;
+  product : any;
   constructor(private http: HttpClient, private router: Router, private sharedService : SharedService) { }
 
   onLogout() {
@@ -102,6 +103,9 @@ export class HomeComponent implements OnInit {
     if(this.products.length === 0) {
       this.isEmpty = true;
     }
+    this.sharedService.search_data.subscribe(data => {
+      console.log(data);
+    })
   }
 
   ngOnDestroy() {

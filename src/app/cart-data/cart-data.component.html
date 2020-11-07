@@ -39,23 +39,25 @@
   <h1 class="h2" style="margin-top: 10%;"> List is empty </h1>
 </div>
 
-
-<div *ngFor="let product of products | filter : searchText">
-  <div class="card mb-3" style="max-width: 85%; margin-left: 30px;">
-    <div class="row no-gutters">
-      <div class="col-md-5">
-        <img src="assets/{{product.product_image}}" height="300px" width="350px">
-      </div>
-      <div class="col-md-7">
-        <div class="card-body">
-          <h5 class="card-title">Product name : {{product.product_name}}</h5>
-          <p class="card-text"> Price (in Rupees): {{product.product_price}} </p>
-          <p class="card-text"> Description : {{product.product_description}} </p>
-          <p class="card-text"> Discount : {{product.product_discount}}% </p>
-          <button type="button" class="btn btn-success" (click)="toBuy(product)">Proceed to checkout</button>
-          <button type="button" class="btn btn-danger ml-3" (click)="toRemove(product)">Remove item</button>
+<div *ngIf = "(products | filter : searchText) as results">
+  <div *ngFor="let product of results">
+    <div class="card mb-3" style="max-width: 85%; margin-left: 30px;">
+      <div class="row no-gutters">
+        <div class="col-md-5">
+          <img src="assets/{{product.product_image}}" height="300px" width="350px">
+        </div>
+        <div class="col-md-7">
+          <div class="card-body">
+            <h5 class="card-title">Product name : {{product.product_name}}</h5>
+            <p class="card-text"> Price (in Rupees): {{product.product_price}} </p>
+            <p class="card-text"> Description : {{product.product_description}} </p>
+            <p class="card-text"> Discount : {{product.product_discount}}% </p>
+            <button type="button" class="btn btn-success" (click)="toBuy(product)">Proceed to checkout</button>
+            <button type="button" class="btn btn-danger ml-3" (click)="toRemove(product)">Remove item</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+</div>
+<h2 *ngIf = "results.length === 0" class="d-flex justify-content-center align-items-center mt-5">No results Found</h2>
 </div>
