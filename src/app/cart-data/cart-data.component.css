@@ -1,0 +1,90 @@
+.body-container {
+    background:#ADA5FF
+}
+
+.image-container {
+    height: 270px;
+    width: 10%;
+}
+
+.image-container img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    /* border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px; */
+    border-radius: 50px;
+}
+
+.card-container {
+    margin: 0 auto;
+    max-width: 75%;
+    height: 300px;
+}
+
+.card {
+    margin-top: 10px;
+    border-radius: 50px;
+    box-shadow: 0px 23px 49px -5px #6961BD;
+    font-family: 'Mulish', sans-serif;
+    color: #2C2760;
+    letter-spacing: 1px;
+    height: 90%;
+    
+}
+
+.button-remove, .button-success {
+    height: 45px;
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    font-size: 15px;
+    letter-spacing: 1px;
+    box-shadow: 0px 15px 20px -10px rgba(71, 62, 166, 0.552989);
+}
+
+.button-success {
+    background-color: #2C2760;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    padding-left: 15px;
+}
+
+.button-remove {
+    background-color: #6961BD;
+    padding-right: 20px;
+    text-align: center;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.button-success:hover {
+    background:#ADA5FF;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.10), 0 6px 3px rgba(0,0,0,0.23);
+}
+
+.card-col-left {
+    float: left;
+    width: 40%;
+}
+
+.card-col-right {
+    float: right;
+    width: 40%;
+}
+
+.button-group {
+    margin-left: 145px;
+}
+
+h3, hr {
+    color: #2C2760;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-family: Mulish;
+}
+
+hr {
+    margin-bottom: 10px;
+}

@@ -1,63 +1,84 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
-  <a class="navbar-brand" routerLink="/home">Logeshwaran</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" routerLink='/home'>Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/cart">My cart</a>
-      </li>
-    </ul>
-    <div class="row mr-2">
-      <div class="col">
-        <div ngbDropdown class="d-inline-block">
-          <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Filter</button>
-          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <button ngbDropdownItem (click)="Wishlist()">Wishlist</button>
-            <button ngbDropdownItem (click)="PreOrders()"> Previous orders</button>
+<html>
+
+<body class="body-container">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
+    <a class="navbar-brand" routerLink="/home">Logeshwaran</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink='/home'>Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/cart">My cart</a>
+        </li>
+      </ul>
+      <div class="row mr-2">
+        <div class="col">
+          <div ngbDropdown class="d-inline-block">
+            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Filter</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <button ngbDropdownItem (click)="Wishlist()">Wishlist</button>
+              <button ngbDropdownItem (click)="PreOrders()"> Previous orders</button>
+            </div>
           </div>
         </div>
       </div>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-3" type="search" [(ngModel)]="searchText" name="search"
+          placeholder="Search for products" aria-label="Search" style="width: 600px;">
+      </form>
+      <form class="form-inline my-2 my-lg-0">
+        <button class="btn btn-outline-success my-2 my-sm-0" (click)="onLogout()">Logout</button>
+      </form>
     </div>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-3" type="search" [(ngModel)]="searchText" name="search"
-        placeholder="Search for products" aria-label="Search" style="width: 600px;">
-    </form>
-    <form class="form-inline my-2 my-lg-0">
-      <button class="btn btn-outline-success my-2 my-sm-0" (click)="onLogout()">Logout</button>
-    </form>
+  </nav>
+
+  <!-- navigation bar ends -->
+  <div class="d-flex justify-content-center align-items-center" *ngIf="isEmpty">
+    <h1 class="h2" style="margin-top: 10%;"> List is empty </h1>
   </div>
-</nav>
+  <div>
+    <h3>My Cart</h3>
+    <hr>
+  </div>
 
-<!-- navigation bar ends -->
-<div class="d-flex justify-content-center align-items-center" *ngIf="isEmpty">
-  <h1 class="h2" style="margin-top: 10%;"> List is empty </h1>
-</div>
+  <div *ngIf="(products | filter : searchText) as results">
+    <div *ngFor="let product of results">
+      <div class="card-container">
+        <div class="card mb-3" style="max-width: 85%; margin-left: 30px;">
+          <div class="row no-gutters">
+            <div class="col-md-4 image-container">
+              <img src="assets/{{product.product_image}}">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title"><label class="card-col-left">Product name</label><label>:</label><label
+                    class="card-col-right">{{product.product_name}}</label></h5>
+                <p class="card-text"> <label class="card-col-left">Price (in Rupees)</label><label>:</label><label
+                    class="card-col-right"> {{product.product_price}}</label> </p>
+                <p class="card-text"><label class="card-col-left">Description</label><label>:</label><label
+                    class="card-col-right">{{product.product_description}}</label> </p>
+                <p class="card-text"> <label class="card-col-left">Discount </label><label>:</label><label
+                    class="card-col-right"> {{product.product_discount}}%</label> </p>
+                <div class="button-group">
+                  <button type="button" class="button-success" (click)="toBuy(product)">Buy item</button>
+                  <button type="button" class="button-remove" (click)="toRemove(product)">Remove</button>
+                </div>
 
-<div *ngIf = "(products | filter : searchText) as results">
-  <div *ngFor="let product of results">
-    <div class="card mb-3" style="max-width: 85%; margin-left: 30px;">
-      <div class="row no-gutters">
-        <div class="col-md-5">
-          <img src="assets/{{product.product_image}}" height="300px" width="350px">
-        </div>
-        <div class="col-md-7">
-          <div class="card-body">
-            <h5 class="card-title">Product name : {{product.product_name}}</h5>
-            <p class="card-text"> Price (in Rupees): {{product.product_price}} </p>
-            <p class="card-text"> Description : {{product.product_description}} </p>
-            <p class="card-text"> Discount : {{product.product_discount}}% </p>
-            <button type="button" class="btn btn-success" (click)="toBuy(product)">Proceed to checkout</button>
-            <button type="button" class="btn btn-danger ml-3" (click)="toRemove(product)">Remove item</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-</div>
-<h2 *ngIf = "results.length === 0" class="d-flex justify-content-center align-items-center mt-5">No results Found</h2>
-</div>
+    <h2 *ngIf="results.length === 0" class="d-flex justify-content-center align-items-center mt-5">No results Found</h2>
+  </div>
+
+</body>
+
+</html>
