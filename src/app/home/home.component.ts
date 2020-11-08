@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { SharedService } from '../shared.service';
@@ -8,7 +8,7 @@ import { interval, Subscription } from 'rxjs';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
   cart_data: any;
   wish_list: any;
   products: any;
@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   discountAmount : any;
   product : any;
 
-  constructor(private http: HttpClient, private router: Router, private sharedService : SharedService) { }
+  constructor(private http: HttpClient, private router: Router, private sharedService : SharedService, private elementElf : ElementRef) { }
 
   onLogout() {
     localStorage.removeItem('currentUser');
@@ -98,13 +98,18 @@ export class HomeComponent implements OnInit {
     this.products = JSON.parse(localStorage.getItem('productData')) || [];
     const source = interval(10000);
     // this.subscription = source.subscribe(val => this.refreshFunction());
-    // if(this.products.length === 0) {
-    //   this.isEmpty = true;
-    // }
+    if(this.products.length === 0) {
+      this.isEmpty = true;
+    }
+    this.elementElf.nativeElement.ownerDocument.body.style.backgroundColor = '#cbf4f8';
   }
 
   ngOnDestroy() {
     this.subscription && this.subscription.unsubscribe();
+    this.elementElf.nativeElement.ownerDocument.body.style.backgroundColor = '#cbf4f8';
   }
 
+  ngAfterViewInit() {
+    this.elementElf.nativeElement.ownerDocument.body.style.backgroundColor = '#cbf4f8';
+  }
 }

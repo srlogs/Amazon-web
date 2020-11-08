@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,14 +6,14 @@ import { Router } from '@angular/router';
   templateUrl: './wishlist.component.html',
   styleUrls: ['./wishlist.component.css']
 })
-export class WishlistComponent implements OnInit {
+export class WishlistComponent implements OnInit, AfterViewInit, OnDestroy {
   products: any = [];
   allProducts: any;
   currentUser: any;
   cart_data: any;
   searchText : string;
   isEmpty : boolean = false;
-  constructor(private router: Router) { }
+  constructor(private router: Router, private elementRef : ElementRef) { }
 
   onLogout() {
     localStorage.removeItem('currentUser');
@@ -85,5 +85,13 @@ export class WishlistComponent implements OnInit {
     if(this.products.length === 0) {
       this.isEmpty = true;
     }
+  }
+
+  ngOnDestroy() {
+    this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#fa6e91';
+  }  
+
+  ngAfterViewInit() {
+    this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#f7b3c4';
   }
 }

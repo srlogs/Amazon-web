@@ -1,5 +1,5 @@
 .body-container {
-    background:#ADA5FF
+    background:#ADA5FF;
 }
 
 .image-container {
@@ -79,7 +79,7 @@
 }
 
 h3, hr {
-    color: #2C2760;
+    color: white;
     margin-left: 10px;
     margin-right: 10px;
     font-family: Mulish;

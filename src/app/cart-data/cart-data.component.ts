@@ -1,5 +1,5 @@
 import { Route } from '@angular/compiler/src/core';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SharedService } from '../shared.service';
 
@@ -8,12 +8,12 @@ import { SharedService } from '../shared.service';
   templateUrl: './cart-data.component.html',
   styleUrls: ['./cart-data.component.css']
 })
-export class CartDataComponent implements OnInit {
+export class CartDataComponent implements OnInit, AfterViewInit {
   allProducts: any;
   products: any = [];
   searchText : string;
   isEmpty : boolean = false;
-  constructor(private router: Router, private sharedService : SharedService) { }
+  constructor(private router: Router, private sharedService : SharedService, private elementRef : ElementRef) { }
 
   toBuy(data) {
     this.sharedService.sendProductData(data);
@@ -34,6 +34,7 @@ export class CartDataComponent implements OnInit {
   }
 
   toRemove(data) {
+    this.allProducts = JSON.parse(localStorage.getItem('cartData'));
     var currentUser = localStorage.getItem('currentUser');
     let index = this.allProducts.findIndex(x => x.cart_user === currentUser && x.product_name === data.product_name && x.product_description === data.product_description && x.product_price === data.product_price);
     this.allProducts.splice(index, 1);
@@ -45,6 +46,7 @@ export class CartDataComponent implements OnInit {
         this.products.push(x);
       }
     })
+    console.log(this.products);
     if(this.products.length === 0) {
       this.isEmpty = true;
     }
@@ -66,8 +68,13 @@ export class CartDataComponent implements OnInit {
           }
         })
     }
+
+    console.log(this.products);
     if(this.products.length === 0) {
       this.isEmpty = true;
     }
+  }
+  ngAfterViewInit() {
+    this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#ADA5FF';
   }
 }

@@ -42,7 +42,7 @@
 .body-container {
   /* background-color: #f2c4cd; */
   /* background-color: #fab9cf; */
-  background: linear-gradient(#cbf4f8, #cde5f3);
+  /* background: linear-gradient(#cbf4f8, #cde5f3); */
   
   /* background: linear-gradient(#fab9cf, #9198e5); */
   background-size: cover;
@@ -59,6 +59,10 @@
   padding: 10px;
   font-family: system-ui;
   letter-spacing: 00.1em;
+}
+
+.button-buy, .button-cart, .button-wishlist:focus {
+  outline: none;
 }
 
 .button-buy {
@@ -152,7 +156,7 @@
 
 .card-title-right {
   float: right;
-  width: 50%;
+  width: 30%;
 }
 
 .button-groups {

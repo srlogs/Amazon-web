@@ -1,6 +1,6 @@
 <html>
 
-<body class="body-container">
+<div class="body-container">
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
     <a class="navbar-brand" routerLink="/home">Logeshwaran</a>
@@ -38,14 +38,16 @@
     </div>
   </nav>
 
+  
   <!-- navigation bar ends -->
-  <div class="d-flex justify-content-center align-items-center" *ngIf="isEmpty">
-    <h1 class="h2" style="margin-top: 10%;"> List is empty </h1>
-  </div>
   <div>
     <h3>My Cart</h3>
     <hr>
   </div>
+  <div class="d-flex justify-content-center align-items-center" *ngIf="isEmpty">
+    <h1 class="h2" style="margin-top: 10%;"> List is empty </h1>
+  </div>
+
 
   <div *ngIf="(products | filter : searchText) as results">
     <div *ngFor="let product of results">
@@ -69,7 +71,6 @@
                   <button type="button" class="button-success" (click)="toBuy(product)">Buy item</button>
                   <button type="button" class="button-remove" (click)="toRemove(product)">Remove</button>
                 </div>
-
               </div>
             </div>
           </div>
@@ -79,6 +80,6 @@
     <h2 *ngIf="results.length === 0" class="d-flex justify-content-center align-items-center mt-5">No results Found</h2>
   </div>
 
-</body>
+</div>
 
 </html>

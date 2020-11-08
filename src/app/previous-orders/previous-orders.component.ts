@@ -1,5 +1,5 @@
 import { JsonPipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SharedService } from '../shared.service';
 
@@ -8,13 +8,13 @@ import { SharedService } from '../shared.service';
   templateUrl: './previous-orders.component.html',
   styleUrls: ['./previous-orders.component.css']
 })
-export class PreviousOrdersComponent implements OnInit {
+export class PreviousOrdersComponent implements OnInit, AfterViewInit {
 
   searchText: string;
   products: any = [];
   allProducts: any = [];
   isEmpty: boolean = false;
-  constructor(private router: Router, private sharedService: SharedService) { }
+  constructor(private router: Router, private sharedService: SharedService, private elementRef : ElementRef) { }
 
   toBuy(data) {
     this.sharedService.sendProductData(data);
@@ -60,4 +60,7 @@ export class PreviousOrdersComponent implements OnInit {
     console.log(this.products);
   }
 
+  ngAfterViewInit() {
+    this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#D5E4E4';
+  }
 }
