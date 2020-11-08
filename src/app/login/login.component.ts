@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, AfterViewInit {
   users: any;
   form: FormGroup;
   submitted = false;
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   inCorrect = false;
   admin_username: string = "admin";
   admin_password: string = "admin@ecom";
-  constructor(private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private elementRef : ElementRef) { }
 
   OnSubmit() {
     this.submitted = true;
@@ -45,6 +45,10 @@ export class LoginComponent implements OnInit {
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
+  }
+
+  ngAfterViewInit() {
+    this.elementRef.nativeElement.ownerDocument.body.style.backgroundColour = 'white';
   }
   get f() { return this.form.controls; }
 

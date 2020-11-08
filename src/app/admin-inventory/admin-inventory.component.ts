@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { interval, Observable, Subject, Subscription } from 'rxjs';
 import { Injectable } from '@angular/core';
@@ -10,14 +10,14 @@ import { SharedService } from '../shared.service';
   templateUrl: './admin-inventory.component.html',
   styleUrls: ['./admin-inventory.component.css']
 })
-export class AdminInventoryComponent implements OnInit {
+export class AdminInventoryComponent implements OnInit, AfterViewInit {
 
   private subject = new Subject<any>();
   products : any;
   searchText : string;
   isEmpty : boolean = false;
   subscription : Subscription;
-  constructor(private router : Router, private sharedService : SharedService) { 
+  constructor(private router : Router, private sharedService : SharedService, private elementRef : ElementRef) { 
   }
 
   onLogout() {
@@ -50,5 +50,10 @@ export class AdminInventoryComponent implements OnInit {
     const source = interval(1000);
     this.subscription = source.subscribe(val => this.refreshFunction);
   }
+
+  ngAfterViewInit() {
+    this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#ebf7eb';
+  }
+
 
 }

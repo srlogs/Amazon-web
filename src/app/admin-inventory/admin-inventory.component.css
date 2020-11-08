@@ -1,0 +1,27 @@
+.card {
+    background-color: whitesmoke;
+    border-radius: 30px;
+    height: 90%;
+    font-family: 'Mulish', sans-serif;
+    box-shadow: 0px 23px 49px -5px #232225;
+    margin-top: 10px;
+}
+
+.card-container {
+    margin: 0 auto;
+    max-width: 75%;
+    height: 350px;
+}
+
+.image-container {
+    width: 30%;
+    height: 315px;
+}
+
+.image-container img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 30px;
+}
+

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -18,7 +18,7 @@ export class UpdateItemComponent implements OnInit {
   product_image: any;
   searchText : string;
   submitted = false;
-  constructor(private adminInventory: AdminInventoryComponent, private sharedService: SharedService, private formBuilder: FormBuilder, private router : Router) { }
+  constructor(private adminInventory: AdminInventoryComponent, private sharedService: SharedService, private formBuilder: FormBuilder, private router : Router, private elementRef : ElementRef) { }
 
   onSubmit() {
     this.submitted = true;
@@ -67,6 +67,10 @@ export class UpdateItemComponent implements OnInit {
       console.log(data);
     })
   }
+
+  // ngAfterViewInit() {
+
+  // }
 
   get f() {
     return this.form.controls;

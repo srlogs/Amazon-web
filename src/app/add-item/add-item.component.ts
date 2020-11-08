@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ViewChild } from '@angular/core';
@@ -8,7 +8,7 @@ import { ViewChild } from '@angular/core';
   templateUrl: './add-item.component.html',
   styleUrls: ['./add-item.component.css']
 })
-export class AddItemComponent implements OnInit {
+export class AddItemComponent implements OnInit, AfterViewInit {
 
   @ViewChild('myInput')
   myInputVariable : ElementRef
@@ -26,7 +26,7 @@ export class AddItemComponent implements OnInit {
   pcat : string;
   submitted = false;
   searchText : string;
-  constructor(private formBuilder : FormBuilder, private router : Router) { }
+  constructor(private formBuilder : FormBuilder, private router : Router, private elementRef : ElementRef) { }
 
   onFileSelected(event) {
     this.selectedFile = <File> event.target.files[0];
@@ -93,6 +93,9 @@ export class AddItemComponent implements OnInit {
     })
   }
 
+  ngAfterViewInit() {
+    this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = 'white';
+  }
   get f() {
     return this.form.controls;
   }

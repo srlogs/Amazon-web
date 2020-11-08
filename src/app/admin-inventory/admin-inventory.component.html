@@ -33,10 +33,11 @@
 </div>
 <div *ngIf = "( products | filter : searchText) as results">
   <div *ngFor="let product of results">
+    <div class="card-container">
     <div class="card mb-3" style="max-width: 85%; margin-left: 30px;">
       <div class="row no-gutters">
-        <div class="col-md-5">
-          <img src="assets/{{product.product_image}}" height="300px" width="350px">
+        <div class="col-md-5 image-container">
+          <img src="assets/{{product.product_image}}" >
         </div>
         <div class="col-md-7">
           <div class="card-body">
@@ -50,6 +51,7 @@
           </div>
         </div>
       </div>
+    </div>
     </div>
   </div>
   <h2 *ngIf = "results.length === 0" class="d-flex justify-content-center align-items-center mt-5">No results Found</h2>
