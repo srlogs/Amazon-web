@@ -1,82 +1,116 @@
-<!-- navigation bar starts -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
-  <a class="navbar-brand" routerLink="/home">Logeshwaran</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" routerLink='/home'>Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/cart">My cart</a>
-      </li>
-    </ul>
-    <div class="row mr-2">
-      <div class="col">
-        <div ngbDropdown class="d-inline-block">
-          <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Filter</button>
-          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-            <button ngbDropdownItem (click)="Wishlist()">Wishlist</button>
-            <button ngbDropdownItem (click)="PreOrders()"> Previous orders</button>
+<div class="body-container">
+  <!-- navigation bar starts -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
+    <a class="navbar-brand" routerLink="/home">Logeshwaran</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink='/home'>Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/cart">My cart</a>
+        </li>
+      </ul>
+      <div class="row mr-2">
+        <div class="col">
+          <div ngbDropdown class="d-inline-block">
+            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Filter</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <button ngbDropdownItem (click)="Wishlist()">Wishlist</button>
+              <button ngbDropdownItem (click)="PreOrders()"> Previous orders</button>
+            </div>
           </div>
         </div>
       </div>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-3" type="search" [(ngModel)]="searchText" name="search"
+          placeholder="Search for products" aria-label="Search" style="width: 600px;">
+      </form>
+      <form class="form-inline my-2 my-lg-0">
+        <button class="btn btn-outline-success my-2 my-sm-0" (click)="onLogout()">Logout</button>
+      </form>
     </div>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-3" type="search" [(ngModel)]="searchText" name="search"
-        placeholder="Search for products" aria-label="Search" style="width: 600px;">
-    </form>
-    <form class="form-inline my-2 my-lg-0">
-      <button class="btn btn-outline-success my-2 my-sm-0" (click)="onLogout()">Logout</button>
-    </form>
+  </nav>
+
+  <!-- navigation bar ends -->
+
+  <!-- If item gets empty then it'll shows  -->
+  <div class="d-flex justify-content-center align-items-center" *ngIf="isEmpty">
+    <h1 class="h2" style="margin-top: 10%;"> No products available. Please contact admin! </h1>
   </div>
-</nav>
-
-<!-- navigation bar ends -->
-<div class="d-flex justify-content-center align-items-center" *ngIf="isEmpty">
-  <h1 class="h2" style="margin-top: 10%;"> No products available. Please contact admin! </h1>
-</div>
 
 
-<div *ngIf = "( products | filter : searchText) as results">
-  <div *ngFor="let product of results; let i = index">
-    <div class="card mb-3" style="max-width: 85%; margin-left: 30px;">
-      <div class="row no-gutters">
-        <div class="col-md-5">
-          <img src="assets/{{product.product_image}}" height="300px" width="350px">
-        </div>
-        <div class="col-md-5">
-          <div class="card-body">
-            <h5 class="card-title">Product name : {{product.product_name}}</h5>
-            <div *ngIf="product.product_quantity > 0">
-              <p class="card-text">Product Quantity : {{product.product_quantity}}</p>
-              <p class="card-text"> Original Price (in Rupees): <del *ngIf="product.product_discount"
-                  style="color: red;">{{product.product_price}}</del>
-                <label *ngIf="!product.product_discount">{{product.product_price}}</label>
-              </p>
-              <p class="card-text" *ngIf="product.product_discount"> Discounted Price :<label style="color: green;">
-                  {{product.product_price - (product.product_price * (product.product_discount / 100))}}</label> </p>
-              <p class="card-text"> Description : {{product.product_description}} </p>
-              <p class="card-text"> Discount : {{product.product_discount}}% </p>
-              <div class="col-md-16">
-                <button type="button" class="btn btn-primary mr-4" (click)="toCart(product)">Add to cart</button>
-                <button type="button" class="btn btn-success mr-4 pr-4 pl-4" (click)="toBuy(product)">Buy</button>
-                <button type="button" class="btn btn-secondary mr-4" (click)="toWishList(product)">Wishlist</button>
+  <!-- Filtered data -->
+  <div *ngIf="( products | filter : searchText) as results">
+    <div *ngFor="let product of results; let i = index">
+
+      <!-- Card data  -->
+      <div class="card-container">
+        <div class="card">
+          <div class="row no-gutters">
+
+            <div class="col-md-5" class="image-container">
+              <img src="assets/{{product.product_image}}">
+            </div>
+
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title"><label class="card-title-left">Product name</label><label class="card-title-middle">:</label><label class="card-title-right">{{product.product_name}}</label> </h5>
+
+                <div *ngIf="product.product_quantity > 0">
+
+                  <p class="card-text"><label class="card-col-left">Product Quantity</label><label
+                      class="card-col-middle">:</label><label class="card-col-right"> {{product.product_quantity}} </label></p>
+
+                  <p class="card-text">
+                    <label class="card-col-left">Price (in Rupees)</label>
+                    <label class="card-col-middle">:</label>
+                    <label class="card-col-right"> <del *ngIf="product.product_discount"
+                        style="color: red;">{{product.product_price}}</del>
+                      <label *ngIf="!product.product_discount">{{product.product_price}}</label></label>
+                  </p>
+
+                  <p class="card-text" *ngIf="product.product_discount"><label class="card-col-left">Discounted
+                      Price</label>
+                    <label class="card-col-middle"> :</label><label class="card-col-right" style="color: green;">
+                      {{product.product_price - (product.product_price * (product.product_discount / 100))}}</label>
+                  </p>
+
+                  <p class="card-text"> <label class="card-col-left">Description</label><label
+                      class="card-col-middle">:</label><label class="card-col-right"> {{product.product_description}}
+                    </label></p>
+
+                  <p class="card-text"> <label class="card-col-left">Discount</label><label
+                      class="card-col-middle">:</label><label class="card-col-right">{{product.product_discount}}%
+                    </label></p>
+
+                  <!-- Buttons field -->
+                  <div class="col-md-16 button-groups mt-3">
+                    <button type="button" class="button-cart mr-4 pr-4 pl-4" (click)="toCart(product)">Add to
+                      cart</button>
+                    <button type="button" class="button-buy mr-4 pr-5 pl-5" (click)="toBuy(product)">Buy</button>
+                    <button type="button" class="button-wishlist mr-4 pr-4 pl-4"
+                      (click)="toWishList(product)">Wishlist</button>
+                  </div>
+
+                </div>
+                <div *ngIf="product.product_quantity <= 0" class="mt-5">
+                  <h3 class="h3" style="color: red;"> Out of Stock</h3>
+                </div>
               </div>
             </div>
-            <div *ngIf="product.product_quantity <= 0" class="mt-5">
-              <h3 class="h3" style="color: red;"> Out of Stock</h3>
-            </div>
+            <!-- <div class="col-md-2">
+            <bi name="heart" class="big fill-red mr-2" style="float: right;"></bi>
+          </div> -->
           </div>
         </div>
-        <div class="col-md-2">
-          <bi name="heart" class="big fill-red mr-2" style="float: right;"></bi>
-        </div>
       </div>
+
     </div>
+    <h2 *ngIf="results.length === 0" class="d-flex justify-content-center align-items-center mt-5">No results Found</h2>
   </div>
-  <h2 *ngIf = "results.length === 0" class="d-flex justify-content-center align-items-center mt-5">No results Found</h2>
 </div>
