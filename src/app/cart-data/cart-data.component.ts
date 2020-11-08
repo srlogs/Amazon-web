@@ -58,6 +58,14 @@ export class CartDataComponent implements OnInit {
         this.products.push(x);
       }
     })
+    this.allProducts = JSON.parse(localStorage.getItem('productData')) ||[];
+    for(let i = 0; i < this.products.length; ++i) {
+        this.allProducts.find(x => {
+          if(x.product_name === this.products[i].product_name && x.product_category === this.products[i].product_category && x.product_description === this.products[i].product_description) {
+              this.products[i].product_discount = x.product_discount;
+          }
+        })
+    }
     if(this.products.length === 0) {
       this.isEmpty = true;
     }
