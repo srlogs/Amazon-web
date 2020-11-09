@@ -23,11 +23,11 @@ While running the application, kindly update the product list in the Admin Porta
     * Admin can add new item, update existing item quantity as well as discount value
 
 ## Consumer Module: 
-Consumer need to register into this application to access the products
-After registration and successful login, users can do the following actions:
-    * Buy the products
-    * Can add the products to their cart
-    * Can add the products to the wishlist
+    * Consumer need to register into this application to access the products.
+    * After registration and successful login, users can do the following actions:
+        * Buy the products
+        * Can add the products to their cart
+        * Can add the products to the wishlist
 
 ## Note:
     * SINCE WEB LOCALSTORAGE DOESN'T HAVE ENOUGH MEMORY (MAX 10MB) TO STORE ALL THE IMAGES, I STORED THE PATH OF THE IMAGES WHICH LIES IN THIS PATH `amazon/src/assets`.
