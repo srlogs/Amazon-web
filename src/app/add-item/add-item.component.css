@@ -21,7 +21,7 @@ input[type=text], textarea, input[type=number] {
 
 
 body {
-  background: radial-gradient(#f588d8, #c0a3e5);
+  background: linear-gradient(#f3aae0, #d5c2ee);
   background-size: cover;
 }
 
