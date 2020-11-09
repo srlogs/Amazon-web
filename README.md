@@ -1,27 +1,33 @@
-# Amazon
+Readme.txt
+Hi,
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.1.
+This is Logeshwaran, and I have been assigned the project “Implement cart module of an e-commerce platform like Amazon”
+Please find the GitHub repository link:
+GITHUB LINK:
 
-## Development server
+How to run the above project from GITHUB:
+Clone the above repository.
+Run “npm install” command to install the needed dependencies of this application.
+Run “ng serve” to run this application.
+	
+While running the application, kindly update the product list in the Admin Portal first before logging into user portal, since only the products updated by the admin are visible to the users. 
+Workflow of the project:
+Admin Module:
+Admin can access application by entering the respective credentials
+Username: admin
+Password: admin@ecom
+Admin can add new item, update existing item quantity as well as discount value
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Consumer Module: 
+Consumer need to register into this application to access the products
+After registration and successful login, users can do the following actions:
+Buy the products
+Can add the products to their cart
+Can add the products to the wishlist
 
-## Code scaffolding
+Note:
+	Since web localstorage doesn't have enough memory (around 10MB) to store all the images, I stored the path of the images which lies in this path "amazon/src/assets".  Please choose images from "amazon/src/assets" in this project folder.
+	 USERS CANNOT SEE ANY PRODUCTS IN THEIR ACCOUNT UNLESS ADMIN UPDATES THE PRODUCTS IN THE PORTAL FIRST
+	
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
