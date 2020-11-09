@@ -1,0 +1,30 @@
+.card {
+  height: 100%;
+  margin: 0 auto;
+  background-color: whitesmoke;
+  border-radius: 20px;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+
+.card-container {
+  max-width: 60%;
+  height: 84%;
+  margin: 0 auto;
+
+}
+
+input[type=text], textarea, input[type=number] {
+    background-color: whitesmoke;
+}
+
+
+
+body {
+  background: radial-gradient(#f588d8, #c0a3e5);
+  background-size: cover;
+}
+
+.h2 {
+    color: white;
+}

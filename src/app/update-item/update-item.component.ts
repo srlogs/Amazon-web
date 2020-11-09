@@ -18,6 +18,13 @@ export class UpdateItemComponent implements OnInit {
   product_image: any;
   searchText : string;
   submitted = false;
+  p_name : string;
+  p_quantity : number;
+  p_price : number;
+  p_description : string;
+  p_discount : number;
+  p_category : string;
+
   constructor(private adminInventory: AdminInventoryComponent, private sharedService: SharedService, private formBuilder: FormBuilder, private router : Router, private elementRef : ElementRef) { }
 
   onSubmit() {
@@ -27,7 +34,7 @@ export class UpdateItemComponent implements OnInit {
     }
     this.products = JSON.parse(localStorage.getItem('productData'));
     this.products.find(x => {
-      if (x.product_name === this.f.product_name.value && x.product_price === this.f.product_price.value && x.product_description === this.f.product_description.value) {
+      if (x.product_name === this.p_name && x.product_price === this.p_price && x.product_description === this.p_description) {
         x.product_quantity = this.f.product_quantity.value;
         x.product_discount = this.f.product_discount.value;
       }
@@ -46,23 +53,25 @@ export class UpdateItemComponent implements OnInit {
   ngOnInit(): void {
 
     this.form = this.formBuilder.group({
-      product_name: ['', Validators.required],
       product_quantity: ['', Validators.required],
-      product_price: ['', Validators.required],
-      product_description: ['', Validators.required],
-      product_discount: [' ', Validators.required],
-      product_category : ['', Validators.required]
+      product_discount: ['', Validators.required],
     })
 
 
 
     this.sharedService.currentData.subscribe(data => {
-      this.f.product_name.setValue(data.product_name);
+      // this.f.product_name.setValue(data.product_name);
+      // this.f.product_quantity.setValue(data.product_quantity);
+      // this.f.product_price.setValue(data.product_price);
+      // this.f.product_description.setValue(data.product_description);
+      // this.f.product_discount.setValue(data.product_discount);
+      // this.f.product_category.setValue(data.product_category);
+      this.p_name = data.product_name;
       this.f.product_quantity.setValue(data.product_quantity);
-      this.f.product_price.setValue(data.product_price);
-      this.f.product_description.setValue(data.product_description);
+      this.p_category = data.product_category;
+      this.p_price = data.product_price;
       this.f.product_discount.setValue(data.product_discount);
-      this.f.product_category.setValue(data.product_category);
+      this.p_description = data.product_description;
       this.product_image = data.product_image;
       console.log(data);
     })
