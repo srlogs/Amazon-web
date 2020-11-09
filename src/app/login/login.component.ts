@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.elementRef.nativeElement.ownerDocument.body.style.backgroundColour = 'white';
+    this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = 'white';
   }
   get f() { return this.form.controls; }
 

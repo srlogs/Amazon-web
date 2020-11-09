@@ -48,7 +48,7 @@ export class PreviousOrdersComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.products = [];
-    this.allProducts = JSON.parse(localStorage.getItem('orders'));
+    this.allProducts = JSON.parse(localStorage.getItem('orders')) ||[];
     this.allProducts.find(x => {
       if (x.cart_user === localStorage.getItem('currentUser')) {
         this.products.push(x);
@@ -57,6 +57,7 @@ export class PreviousOrdersComponent implements OnInit, AfterViewInit {
     if (this.products.length === 0) {
       this.isEmpty = true;
     }
+    this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#D5E4E4';
     console.log(this.products);
   }
 
